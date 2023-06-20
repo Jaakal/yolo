@@ -1,0 +1,30 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
+  "plugins": ["stylelint-scss"],
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "selector-class-pattern": "^[a-z][a-zA-Z0-9-]+$",
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "function-no-unknown": [
+      true,
+      {
+        "ignoreFunctions": [
+          "/map_get/",
+          "/fluid-size/",
+          "/em-size/",
+          "/strip-unit/"
+        ]
+      }
+    ],
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["blockless-after-same-name-blockless", "first-nested"],
+        "ignore": ["after-comment"],
+        "ignoreAtRules": ["else"]
+      }
+    ],
+    "import-notation": null
+  }
+}

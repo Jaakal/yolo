@@ -1,0 +1,61 @@
+/* stylelint-disable-next-line block-no-empty */
+.element {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fluid-size(104px, 200px);
+  aspect-ratio: 200 / 156;
+  border-radius: 6px;
+  opacity: 0;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border: 2px solid transparent;
+    border-radius: 6px;
+    transition: border-width 0.15s ease-out;
+  }
+}
+
+.playersChoice {
+  &::after {
+    border-width: 4px;
+  }
+}
+
+.betAmount {
+  margin-block-end: fluid-size(8px, 15px);
+}
+
+.rock {
+  color: $colorBleuDeFrance;
+  background-color: $colorFlyByNight;
+
+  &::after {
+    border-color: $colorNightlyActivities;
+  }
+}
+
+.paper {
+  color: $colorWarpstoneGlow;
+  background-color: $colorDeepFir;
+
+  &::after {
+    border-color: $colorIntoxicate;
+  }
+}
+
+.scissors {
+  color: $colorFrenchWinery;
+  background-color: $colorMaroonOak;
+
+  &::after {
+    border-color: $colorRedHerring;
+  }
+}

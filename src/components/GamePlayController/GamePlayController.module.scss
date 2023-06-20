@@ -1,0 +1,39 @@
+/* stylelint-disable-next-line block-no-empty */
+.element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+}
+
+.isHidden {
+  height: 0;
+  overflow: hidden;
+}
+
+.positionValue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.7em;
+  min-height: 1em;
+  color: $colorWhite;
+}
+
+.versusLabel {
+  display: flex;
+  align-items: center;
+  height: em-size(54, 37);
+  line-height: 1.15em;
+}
+
+@include respond-to(MEDIUM) {
+  .element {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .versusLabel {
+    align-items: flex-end;
+  }
+}

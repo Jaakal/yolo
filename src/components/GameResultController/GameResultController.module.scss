@@ -1,0 +1,42 @@
+/* stylelint-disable-next-line block-no-empty */
+.element {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: em-size(54px, 54px);
+  opacity: 0;
+}
+
+.isHidden {
+  height: 0;
+  overflow: hidden;
+}
+
+.result {
+  position: relative;
+  min-height: 1em;
+  margin-block-end: 24px;
+}
+
+.won {
+  color: $colorIntoxicate;
+}
+
+.tie {
+  color: $colorBleuDeFrance;
+}
+
+.lost {
+  color: $colorRedHerring;
+}
+
+.winSumAmount {
+  margin-inline-start: 0.2em;
+  color: $colorWhite;
+}
+
+@for $i from 1 through 7 {
+  .length-#{$i} {
+    width: $i * 0.75em;
+  }
+}

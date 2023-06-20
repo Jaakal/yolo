@@ -1,0 +1,50 @@
+/* stylelint-disable-next-line block-no-empty */
+.element {
+  position: relative;
+  width: fluid-size(34px, 50px);
+  aspect-ratio: 1;
+  color: $colorBlack;
+  opacity: 0;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background-color: $colorAria;
+  border: 3px solid $colorBluerocratic;
+  border-radius: 50%;
+}
+
+.bet {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.oldBet {
+  opacity: 0;
+}
+
+.length-4 {
+  font-size: 0.8em;
+}
+
+.length-5 {
+  font-size: 0.6em;
+}
+
+@include respond-to(MEDIUM) {
+  .background {
+    border-width: 4px;
+  }
+}
+
+@include respond-to(XLARGE) {
+  .background {
+    border-width: 5px;
+  }
+}

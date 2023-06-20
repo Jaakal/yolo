@@ -1,0 +1,11 @@
+import styles from './{{pascalCase name}}.module.scss';
+
+export interface {{pascalCase name}}Props extends React.HTMLProps<HTMLDivElement> {}
+
+export type {{pascalCase name}}Refs = {};
+
+const {{pascalCase name}}: React.FunctionComponent<{{pascalCase name}}Props> = () => {
+  return <div className={styles.element}></div>
+}
+
+export default {{pascalCase name}};

@@ -1,0 +1,31 @@
+@use 'sass:math';
+
+@function fluid-size(
+  $minSize,
+  $maxSize,
+  $minViewportWidth: $minimumFluidTypeViewportWidth,
+  $maxViewportWidth: $maximumFluidTypeViewportWidth
+) {
+  @return calc(
+    (
+        (
+            (
+                max(#{$minViewportWidth}, min(100vw, #{$maxViewportWidth})) - #{$minViewportWidth}
+              ) / #{strip-unit($maxViewportWidth - $minViewportWidth)}
+          ) * #{strip-unit($maxSize - $minSize)}
+      ) + #{$minSize}
+  );
+}
+
+@function fluid-size-mobile($minSize, $maxSize) {
+  @return fluid-size(
+    $minSize,
+    $maxSize,
+    $minimumFluidTypeViewportWidth,
+    $maximumFluidTypeViewportWidthMobile
+  );
+}
+
+@function fluid-size-desktop($minSize, $maxSize) {
+  @return fluid-size($minSize, $maxSize, $minimumFluidTypeViewportWidthDesktop);
+}

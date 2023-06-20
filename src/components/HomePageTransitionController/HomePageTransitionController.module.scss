@@ -1,0 +1,96 @@
+/* stylelint-disable-next-line block-no-empty */
+.element {
+  position: relative;
+  width: 100%;
+  min-width: min-content;
+  min-height: 100dvh;
+  opacity: 0;
+}
+
+.backgroundCropper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.backgroundWrapper {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 200%;
+}
+
+.background {
+  width: 100%;
+  height: 50%;
+}
+
+.background1 {
+  background: linear-gradient(
+    to bottom,
+    $colorPigIron,
+    cubic-bezier(0, 0, 0, 0.1),
+    $colorDynamicBlack
+  );
+}
+
+.background2 {
+  background: linear-gradient(
+    to bottom,
+    $colorDynamicBlack,
+    cubic-bezier(0, 0, 0, 1),
+    $colorBlack
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100dvh;
+  padding-inline: $paddingInline;
+}
+
+.statsBar {
+  width: calc(100% + #{$paddingInline * 2});
+}
+
+.controllersWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 3em;
+}
+
+.statsBarSpacer,
+.controlsWrapperSpacer {
+  flex: 1;
+  max-height: 200px;
+}
+
+.statsBarSpacer {
+  min-height: 20px;
+}
+
+.gamePositionSpacer {
+  flex: 0.375;
+  min-height: 15px;
+  max-height: 75px;
+}
+
+.gameNavigationSpacer {
+  flex: 0.225;
+  min-height: 10px;
+  max-height: 45px;
+}
+
+@include respond-to(MEDIUM) {
+  .controllersWrapper {
+    min-height: 1em;
+  }
+}

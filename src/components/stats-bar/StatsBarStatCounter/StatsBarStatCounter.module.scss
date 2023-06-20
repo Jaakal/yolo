@@ -1,0 +1,9 @@
+/* stylelint-disable-next-line block-no-empty */
+.element {
+}
+
+@for $i from 1 through 7 {
+  .length-#{$i} {
+    width: $i * 0.75em;
+  }
+}

@@ -1,0 +1,15 @@
+@function get-media-query($name) {
+  $query: map_get($mediaQueries, $name);
+
+  @return '#{$query}';
+}
+
+@mixin respond-to($name) {
+  @if map-has-key($mediaQueries, $name) {
+    @media #{get-media-query($name)} {
+      @content;
+    }
+  } @else {
+    @error "MediaQuery #{$name} does not exist";
+  }
+}

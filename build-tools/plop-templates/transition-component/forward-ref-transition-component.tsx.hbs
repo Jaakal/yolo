@@ -1,0 +1,30 @@
+'use client';
+
+import { forwardRef, useImperativeHandle } from 'react';
+import { useRefs } from '../../hooks/useRefs';
+import { useTransitionController } from '../../hooks/TransitionController';
+import { setupTransitionInTimeline } from './TransitionController';
+import styles from './{{pascalCase name}}.module.scss';
+
+export interface {{pascalCase name}}Props extends React.HTMLProps<HTMLDivElement> {}
+
+export type {{pascalCase name}}Refs = {
+  element: HTMLDivElement;
+};
+
+const {{pascalCase name}}: React.ForwardRefExoticComponent<{{pascalCase name}}Props & React.RefAttributes<HTMLDivElement>> = forwardRef(
+  ({}, forwardRef) => {
+    const refs = useRefs<{{pascalCase name}}Refs>();
+
+    useImperativeHandle(forwardRef, () => refs.element.current!);
+
+    useTransitionController<{{pascalCase name}}Refs>({
+      ref: refs.element,
+      refs,
+      setupTransitionInTimeline,
+    });
+
+    return <div className={styles.element} ref={refs.element}></div>;
+  });
+
+export default {{pascalCase name}};

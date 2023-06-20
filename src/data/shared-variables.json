@@ -1,0 +1,16 @@
+{
+  "mediaQueries": {
+    "XSMALL": "'(max-width: 567px)'",
+    "SMALL": "'(min-width: 568px)'",
+    "MEDIUM": "'(min-width: 768px)'",
+    "LARGE": "'(min-width: 1024px)'",
+    "XLARGE": "'(min-width: 1440px)'"
+  },
+  "deviceState": {
+    "XSMALL": 0,
+    "SMALL": 1,
+    "MEDIUM": 2,
+    "LARGE": 3,
+    "XLARGE": 4
+  }
+}

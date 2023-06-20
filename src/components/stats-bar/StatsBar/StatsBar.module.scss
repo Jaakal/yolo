@@ -1,0 +1,16 @@
+/* stylelint-disable-next-line block-no-empty */
+.element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: fluid-size(32px, 36px);
+  background-color: $colorPotBlack;
+  opacity: 0;
+}
+
+.statsBarStat {
+  &:not(:first-child) {
+    margin-left: fluid-size(30px, 90px);
+  }
+}

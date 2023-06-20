@@ -1,0 +1,13 @@
+/* stylelint-disable-next-line block-no-empty */
+.element {
+  display: flex;
+}
+
+.label {
+  opacity: 0;
+}
+
+.counter {
+  margin-inline-start: 0.15em;
+  color: $colorWhite;
+}

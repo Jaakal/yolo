@@ -1,0 +1,43 @@
+// Colors
+$colorBlack: #000;
+$colorWhite: #fff;
+// Background
+$colorPigIron: #494949;
+$colorDynamicBlack: #1d1d1d;
+// Golden copy
+$colorBarley: #d4b37f;
+//Status bar
+$colorPotBlack: #161616;
+// Blue bet
+$colorNightlyActivities: #2e4d97;
+$colorFlyByNight: #211f4f;
+$colorBleuDeFrance: #2680ea;
+// Green bet
+$colorWarpstoneGlow: #187e3a;
+$colorDeepFir: #1a381d;
+$colorIntoxicate: #16c359;
+// Red bet
+$colorFrenchWinery: #9a0e30;
+$colorMaroonOak: #50091e;
+$colorRedHerring: #e31542;
+// Bet amount
+$colorBluerocratic: #225eff;
+$colorAria: #e3e3e3;
+// Primary button
+$colorGoldenSage: #b19b73;
+$colorBlackMetal: #070707;
+
+// Sizes
+$paddingInline: 15px;
+
+// Fonts
+$baseFont: var(--cabin), sans-serif;
+
+// Fluid type
+$minimumFluidTypeViewportWidth: 320px;
+$maximumFluidTypeViewportWidthMobile: 768px;
+$minimumFluidTypeViewportWidthDesktop: 769px;
+$maximumFluidTypeViewportWidth: 1920px;
+
+// Media queries
+@import '../../data/shared-variables.json';

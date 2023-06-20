@@ -1,0 +1,14 @@
+import { {{pascalCase name}}Refs } from './{{pascalCase name}}';
+import { SetupTransitionTimeline } from '../../hooks/TransitionController';
+
+export const setupTransitionInTimeline: SetupTransitionTimeline<{{pascalCase name}}Refs> = (
+  refs,
+  timeline,
+  { getElementTimeline }
+) => {
+  const { element } = refs;
+
+  timeline.fromTo(element, { autoAlpha: 0 }, { autoAlpha: 1 });
+};
+
+// export const setupTransitionOutTimeline: SetupTransitionTimeline<{{pascalCase name}}Refs> = (refs, timeline, { getElementTimeline }) => {};

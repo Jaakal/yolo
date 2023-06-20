@@ -1,0 +1,44 @@
+{
+  "general": {
+    "meta": {
+      "title": "Rock Paper Scissors",
+      "description": "Yolo's Rock Paper Scissors betting game."
+    }
+  },
+  "rockPaperScissors": {
+    "statsBar": {
+      "playerBalance": {
+        "label": "Balance"
+      },
+      "playerLastRoundBet": {
+        "label": "Bet"
+      },
+      "playerLastRoundWin": {
+        "label": "Win"
+      }
+    },
+    "gamePlayHeading": {
+      "versus": "vs"
+    },
+    "gameResultHeading": {
+      "won": "Won",
+      "tie": "Tie",
+      "lost": "Lost",
+      "amount": "You win"
+    },
+    "gamePositionKicker": "Pick your positions",
+    "gamePosition": {
+      "rock": "Rock",
+      "paper": "Paper",
+      "scissors": "Scissors"
+    },
+    "playCta": {
+      "primaryState": {
+        "label": "Play"
+      },
+      "secondaryState": {
+        "label": "Clear"
+      }
+    }
+  }
+}
