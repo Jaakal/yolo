@@ -7,9 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prettier": "prettier --write",
-    "lint:stylelint": "stylelint --fix",
-    "lint:eslint": "eslint --fix --max-warnings=0",
     "plop": "plop"
   },
   "dependencies": {
