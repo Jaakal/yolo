@@ -14,7 +14,8 @@ export const useBetButtonClickHandler = (
   return useCallback(() => {
     soundManager[SampleName.SlotMachineClick].play();
     setOpenPosition(gamePosition);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [setOpenPosition]);
 };
 
 type UseFlags = {

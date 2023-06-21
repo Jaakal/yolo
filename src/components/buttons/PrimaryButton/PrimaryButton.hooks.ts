@@ -24,6 +24,7 @@ export const usePrimaryButtonClickHandler = (
       onClick?.(event);
       onClickTransition(element.current!);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onClick]
   );
 };
@@ -63,5 +64,6 @@ export const useToggleDisabledState = (
       const element = destructureRefObject(elementRef);
       isDisabledTransition(element!, Boolean(disabled));
     })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [disabled]);
 };

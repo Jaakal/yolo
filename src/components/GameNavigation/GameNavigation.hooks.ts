@@ -12,7 +12,7 @@ export const useMainCtaClickHandler = (): (() => void) => {
     } else {
       setGameState(GameState.Clear);
     }
-  }, [gameState]);
+  }, [gameState, setGameState]);
 };
 
 type UseFlags = {

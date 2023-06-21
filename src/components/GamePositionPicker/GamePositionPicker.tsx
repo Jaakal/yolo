@@ -28,57 +28,58 @@ export type GamePositionPickerRefs = {
 
 const GamePositionPicker: React.ForwardRefExoticComponent<
   GamePositionPickerProps & React.RefAttributes<HTMLDivElement>
-> = forwardRef(
-  ({ kickerLabel, rockLabel, paperLabel, scissorsLabel }, forwardRef) => {
-    const [betButtons, addBetButtonRef] = useArrayRef<HTMLButtonElement>();
-    const refs = useRefs<GamePositionPickerRefs>({ betButtons });
-    const betButtonsData = useRef<
-      Array<{ gamePosition: GamePosition; label: string }>
-    >([
-      { gamePosition: GamePosition.Rock, label: rockLabel },
-      { gamePosition: GamePosition.Paper, label: paperLabel },
-      { gamePosition: GamePosition.Scissors, label: scissorsLabel },
-    ]);
-    const betButtonsKeys = useRef<Array<string>>(
-      createElementArrayKeys(betButtonsData.current.length)
-    );
+> = forwardRef(function GamePositionPicker(
+  { kickerLabel, rockLabel, paperLabel, scissorsLabel },
+  forwardRef
+) {
+  const [betButtons, addBetButtonRef] = useArrayRef<HTMLButtonElement>();
+  const refs = useRefs<GamePositionPickerRefs>({ betButtons });
+  const betButtonsData = useRef<
+    Array<{ gamePosition: GamePosition; label: string }>
+  >([
+    { gamePosition: GamePosition.Rock, label: rockLabel },
+    { gamePosition: GamePosition.Paper, label: paperLabel },
+    { gamePosition: GamePosition.Scissors, label: scissorsLabel },
+  ]);
+  const betButtonsKeys = useRef<Array<string>>(
+    createElementArrayKeys(betButtonsData.current.length)
+  );
 
-    useImperativeHandle(forwardRef, () => refs.element.current!);
+  useImperativeHandle(forwardRef, () => refs.element.current!);
 
-    useTransitionController<GamePositionPickerRefs>({
-      ref: refs.element,
-      refs,
-      setupTransitionInTimeline,
-      exposeTransitionController: true,
-    });
+  useTransitionController<GamePositionPickerRefs>({
+    ref: refs.element,
+    refs,
+    setupTransitionInTimeline,
+    exposeTransitionController: true,
+  });
 
-    useToggleKicker(refs.kicker);
+  useToggleKicker(refs.kicker);
 
-    return (
+  return (
+    <div
+      className={styles.element}
+      ref={refs.element}
+    >
       <div
-        className={styles.element}
-        ref={refs.element}
+        className={classNames('copy-02', styles.kicker)}
+        ref={refs.kicker}
       >
-        <div
-          className={classNames('copy-02', styles.kicker)}
-          ref={refs.kicker}
-        >
-          {kickerLabel}
-        </div>
-        <div className={styles.betButtonsWrapper}>
-          {betButtonsData.current.map(({ gamePosition, label }, index) => (
-            <BetButton
-              className={styles.betButton}
-              gamePosition={gamePosition}
-              label={label}
-              ref={addBetButtonRef}
-              key={betButtonsKeys.current[index]}
-            />
-          ))}
-        </div>
+        {kickerLabel}
       </div>
-    );
-  }
-);
+      <div className={styles.betButtonsWrapper}>
+        {betButtonsData.current.map(({ gamePosition, label }, index) => (
+          <BetButton
+            className={styles.betButton}
+            gamePosition={gamePosition}
+            label={label}
+            ref={addBetButtonRef}
+            key={betButtonsKeys.current[index]}
+          />
+        ))}
+      </div>
+    </div>
+  );
+});
 
 export default GamePositionPicker;

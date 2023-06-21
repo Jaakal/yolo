@@ -30,7 +30,7 @@ export type BetAmountRefObjects = {
 
 const BetAmount: React.ForwardRefExoticComponent<
   BetAmountProps & React.RefAttributes<HTMLDivElement>
-> = forwardRef(({ className, gamePosition }, forwardRef) => {
+> = forwardRef(function BetAmount({ className, gamePosition }, forwardRef) {
   const refs = useRefs<BetAmountRefs>();
   const openPosition = useStore((state) => state.openPositions[gamePosition]);
 

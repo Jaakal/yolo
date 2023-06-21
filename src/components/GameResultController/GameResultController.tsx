@@ -53,7 +53,10 @@ export type Labels = Labelize<Record<GamePosition, string>> &
 
 const GameResultController: React.ForwardRefExoticComponent<
   GameResultControllerProps & React.RefAttributes<HTMLDivElement>
-> = forwardRef(({ amountLabel, ...otherProps }, forwardRef) => {
+> = forwardRef(function GameResultController(
+  { amountLabel, ...otherProps },
+  forwardRef
+) {
   const [resultLabelChars, addResultLabelCharsRef] =
     useArrayRef<HTMLSpanElement>();
   const refs = useRefs<GameResultControllerRefs>({ resultLabelChars });

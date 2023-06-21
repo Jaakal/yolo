@@ -24,7 +24,10 @@ type labelSelector = 'rockLabel' | 'paperLabel' | 'scissorsLabel';
 
 const GamePlayController: React.ForwardRefExoticComponent<
   GamePlayControllerProps & React.RefAttributes<HTMLDivElement>
-> = forwardRef(({ versusLabel, ...otherProps }, forwardRef) => {
+> = forwardRef(function GamePlayController(
+  { versusLabel, ...otherProps },
+  forwardRef
+) {
   const refs = useRefs<GamePlayControllerRefs>();
 
   useImperativeHandle(forwardRef, () => refs.element.current!);

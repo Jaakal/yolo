@@ -92,14 +92,17 @@ export const useTransitionController = <T extends {}, U = undefined>(
     }
 
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       deleteElementTransitionController(ref.current!);
       transitionInTimelineProgress.current =
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         transitionInTimeline.current.progress();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       transitionInTimeline.current.clear();
     };
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     ...(dependencies ?? []),
     exposeTransitionController,
     ref,

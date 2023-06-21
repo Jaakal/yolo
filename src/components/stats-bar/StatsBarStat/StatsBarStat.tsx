@@ -22,7 +22,7 @@ export type StatsBarStatRefs = {
 
 const StatsBarStat: React.ForwardRefExoticComponent<
   StatsBarStatProps & React.RefAttributes<HTMLDivElement>
-> = forwardRef(({ className, stat, label }, forwardRef) => {
+> = forwardRef(function StatsBarStat({ className, stat, label }, forwardRef) {
   const refs = useRefs<StatsBarStatRefs>();
 
   useImperativeHandle(forwardRef, () => refs.element.current!);

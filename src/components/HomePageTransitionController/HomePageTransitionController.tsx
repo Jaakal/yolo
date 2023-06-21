@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useRefs } from '../../hooks/useRefs';
 import { useTransitionController } from '../../hooks/TransitionController';
 import { setupTransitionInTimeline } from './TransitionController';
@@ -60,6 +60,7 @@ const HomePageTransitionController: React.FunctionComponent<
   playCtaSecondaryLabel,
 }) => {
   const refs = useRefs<HomePageTransitionControllerRefs>();
+  const hasTransitionedIn = useRef<boolean>(false);
 
   const transitionController =
     useTransitionController<HomePageTransitionControllerRefs>({
@@ -71,8 +72,11 @@ const HomePageTransitionController: React.FunctionComponent<
   useSoundManager();
 
   useEffect(() => {
-    transitionController.transitionIn();
-  }, []);
+    if (transitionController && !hasTransitionedIn.current) {
+      hasTransitionedIn.current = true;
+      transitionController.transitionIn();
+    }
+  }, [transitionController]);
 
   return (
     <div

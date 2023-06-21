@@ -24,7 +24,10 @@ export type GameNavigationRefObjects = {
 
 const GameNavigation: React.ForwardRefExoticComponent<
   GameNavigationProps & React.RefAttributes<HTMLDivElement>
-> = forwardRef(({ playCtaPrimaryLabel, playCtaSecondaryLabel }, forwardRef) => {
+> = forwardRef(function GameNavigation(
+  { playCtaPrimaryLabel, playCtaSecondaryLabel },
+  forwardRef
+) {
   const refs = useRefs<GameNavigationRefs>();
 
   useImperativeHandle(forwardRef, () => refs.element.current!);

@@ -11,7 +11,7 @@ export const setupTransitionInTimeline: SetupTransitionTimeline<
   timeline.fromTo(
     element,
     { yPercent: -100 },
-    { yPercent: 0, duration: 0.6, ease: vinnieInOut }
+    { yPercent: 0, duration: 1, ease: vinnieInOut }
   );
 
   stats.forEach((stat, index) => {

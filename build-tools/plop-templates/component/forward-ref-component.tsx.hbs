@@ -11,7 +11,7 @@ export type {{pascalCase name}}Refs = {
 };
  
 const {{pascalCase name}}: React.ForwardRefExoticComponent<{{pascalCase name}}Props & React.RefAttributes<HTMLDivElement>> =
-  forwardRef(({}, forwardRef) => {
+  forwardRef(function {{pascalCase name}}({}, forwardRef) {
     const refs = useRefs<{{pascalCase name}}Refs>();
 
     useImperativeHandle(forwardRef, () => refs.element.current!);

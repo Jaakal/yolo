@@ -30,7 +30,7 @@ export type TransitionControllerProps = {
 
 const StatsBarStatCounter: React.ForwardRefExoticComponent<
   StatsBarStatCounterProps & React.RefAttributes<HTMLDivElement>
-> = forwardRef(({ className, stat }, forwardRef) => {
+> = forwardRef(function StatsBarStatCounter({ className, stat }, forwardRef) {
   const refs = useRefs<StatsBarStatCounterRefs>();
   const [statValue, setStatValue] = useState<number>(0);
   const targetValue = useStore((state) => state[stat]);

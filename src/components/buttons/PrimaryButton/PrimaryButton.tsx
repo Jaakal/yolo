@@ -35,74 +35,71 @@ const backgroundLayersCount = 3;
 
 const PrimaryButton: React.ForwardRefExoticComponent<
   PrimaryButtonProps & React.RefAttributes<HTMLButtonElement>
-> = forwardRef(
-  ({ className, splitLabel, disabled, onClick, ...otherProps }, forwardRef) => {
-    const [backgrounds, addBackgroundRef] = useArrayRef<HTMLDivElement>();
-    const [chars, addCharRef] = useArrayRef<HTMLSpanElement>();
-    const refs = useRefs<PrimaryButtonRefs>({ backgrounds, chars });
-    const backgroundKeys = useRef<Array<string>>(
-      createElementArrayKeys(backgroundLayersCount)
-    );
-    const labelCharacterKeys = useRef<Array<string>>(
-      createElementArrayKeys(splitLabel.length)
-    );
+> = forwardRef(function PrimaryButton(
+  { className, splitLabel, disabled, onClick, ...otherProps },
+  forwardRef
+) {
+  const [backgrounds, addBackgroundRef] = useArrayRef<HTMLDivElement>();
+  const [chars, addCharRef] = useArrayRef<HTMLSpanElement>();
+  const refs = useRefs<PrimaryButtonRefs>({ backgrounds, chars });
+  const backgroundKeys = useRef<Array<string>>(
+    createElementArrayKeys(backgroundLayersCount)
+  );
+  const labelCharacterKeys = useRef<Array<string>>(
+    createElementArrayKeys(splitLabel.length)
+  );
 
-    useImperativeHandle(forwardRef, () => refs.element.current!);
+  useImperativeHandle(forwardRef, () => refs.element.current!);
 
-    const currentSplitLabel = useSplitLabel(
+  const currentSplitLabel = useSplitLabel(refs, splitLabel, labelCharacterKeys);
+
+  useTransitionController<PrimaryButtonRefs>(
+    {
+      ref: refs.element,
       refs,
-      splitLabel,
-      labelCharacterKeys
-    );
+      setupTransitionInTimeline,
+      exposeTransitionController: true,
+    },
+    [currentSplitLabel]
+  );
 
-    useTransitionController<PrimaryButtonRefs>(
-      {
-        ref: refs.element,
-        refs,
-        setupTransitionInTimeline,
-        exposeTransitionController: true,
-      },
-      [currentSplitLabel]
-    );
+  useToggleDisabledState(refs.element, disabled);
 
-    useToggleDisabledState(refs.element, disabled);
+  const onPrimaryButtonClick = usePrimaryButtonClickHandler(
+    refs.element,
+    onClick
+  );
 
-    const onPrimaryButtonClick = usePrimaryButtonClickHandler(
-      refs.element,
-      onClick
-    );
-
-    return (
-      <Button
-        className={classNames('copy-01', styles.element, className)}
-        onClick={onPrimaryButtonClick}
-        disabled={disabled}
-        ref={refs.element}
-        {...(otherProps as React.ButtonHTMLAttributes<HTMLButtonElement>)}
-      >
-        {backgroundKeys.current.map((key, index) => (
-          <div
-            key={key}
-            className={classNames(
-              styles.background,
-              styles[`background${index}`]
-            )}
-            ref={addBackgroundRef}
-          />
-        ))}
+  return (
+    <Button
+      className={classNames('copy-01', styles.element, className)}
+      onClick={onPrimaryButtonClick}
+      disabled={disabled}
+      ref={refs.element}
+      {...(otherProps as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+    >
+      {backgroundKeys.current.map((key, index) => (
         <div
-          className={styles.label}
-          ref={refs.label}
-        >
-          <SplitLine
-            copy={currentSplitLabel}
-            copyCharacterKeys={labelCharacterKeys.current}
-            addCharacterRef={addCharRef}
-          />
-        </div>
-      </Button>
-    );
-  }
-);
+          key={key}
+          className={classNames(
+            styles.background,
+            styles[`background${index}`]
+          )}
+          ref={addBackgroundRef}
+        />
+      ))}
+      <div
+        className={styles.label}
+        ref={refs.label}
+      >
+        <SplitLine
+          copy={currentSplitLabel}
+          copyCharacterKeys={labelCharacterKeys.current}
+          addCharacterRef={addCharRef}
+        />
+      </div>
+    </Button>
+  );
+});
 
 export default PrimaryButton;

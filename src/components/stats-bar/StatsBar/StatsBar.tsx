@@ -24,50 +24,48 @@ export type StatsBarRefs = {
 
 const StatsBar: React.ForwardRefExoticComponent<
   StatsBarProps & React.RefAttributes<HTMLDivElement>
-> = forwardRef(
-  (
-    { className, playerBalanceLabel, playerLastRoundBet, playerLastRoundWin },
-    forwardRef
-  ) => {
-    const [stats, addStatRef] = useArrayRef<HTMLDivElement>();
-    const refs = useRefs<StatsBarRefs>({ stats });
-    const statsBarStatsData = useRef<
-      Array<{ stat: StatsBarStats; label: string }>
-    >([
-      { stat: StatsBarStats.PlayerBalance, label: playerBalanceLabel },
-      { stat: StatsBarStats.PlayerLastRoundBet, label: playerLastRoundBet },
-      { stat: StatsBarStats.PlayerLastRoundWin, label: playerLastRoundWin },
-    ]);
-    const statsBarStatsKeys = useRef<Array<string>>(
-      createElementArrayKeys(statsBarStatsData.current.length)
-    );
+> = forwardRef(function StatsBar(
+  { className, playerBalanceLabel, playerLastRoundBet, playerLastRoundWin },
+  forwardRef
+) {
+  const [stats, addStatRef] = useArrayRef<HTMLDivElement>();
+  const refs = useRefs<StatsBarRefs>({ stats });
+  const statsBarStatsData = useRef<
+    Array<{ stat: StatsBarStats; label: string }>
+  >([
+    { stat: StatsBarStats.PlayerBalance, label: playerBalanceLabel },
+    { stat: StatsBarStats.PlayerLastRoundBet, label: playerLastRoundBet },
+    { stat: StatsBarStats.PlayerLastRoundWin, label: playerLastRoundWin },
+  ]);
+  const statsBarStatsKeys = useRef<Array<string>>(
+    createElementArrayKeys(statsBarStatsData.current.length)
+  );
 
-    useImperativeHandle(forwardRef, () => refs.element.current!);
+  useImperativeHandle(forwardRef, () => refs.element.current!);
 
-    useTransitionController<StatsBarRefs>({
-      ref: refs.element,
-      refs,
-      setupTransitionInTimeline,
-      exposeTransitionController: true,
-    });
+  useTransitionController<StatsBarRefs>({
+    ref: refs.element,
+    refs,
+    setupTransitionInTimeline,
+    exposeTransitionController: true,
+  });
 
-    return (
-      <div
-        className={classNames(styles.element, className)}
-        ref={refs.element}
-      >
-        {statsBarStatsData.current.map(({ stat, label }, index) => (
-          <StatsBarStat
-            className={styles.statsBarStat}
-            stat={stat}
-            label={label}
-            ref={addStatRef}
-            key={statsBarStatsKeys.current[index]}
-          />
-        ))}
-      </div>
-    );
-  }
-);
+  return (
+    <div
+      className={classNames(styles.element, className)}
+      ref={refs.element}
+    >
+      {statsBarStatsData.current.map(({ stat, label }, index) => (
+        <StatsBarStat
+          className={styles.statsBarStat}
+          stat={stat}
+          label={label}
+          ref={addStatRef}
+          key={statsBarStatsKeys.current[index]}
+        />
+      ))}
+    </div>
+  );
+});
 
 export default StatsBar;

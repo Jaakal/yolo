@@ -17,7 +17,7 @@ export const setupTransitionInTimeline: SetupTransitionTimeline<
   timeline.fromTo(
     backgroundWrapper,
     { yPercent: -200 },
-    { yPercent: 0, clearProps: 'all', ease: vinnieInOut }
+    { yPercent: 0, clearProps: 'all', duration: 1.2, ease: vinnieInOut }
   );
 
   const statsBarTimeline = getElementTimeline(statsBar);
@@ -27,7 +27,7 @@ export const setupTransitionInTimeline: SetupTransitionTimeline<
 
   const gamePositionPickerTimeline = getElementTimeline(gamePositionPicker);
   if (gamePositionPickerTimeline) {
-    timeline.add(gamePositionPickerTimeline, 0.45);
+    timeline.add(gamePositionPickerTimeline, 0.5);
   }
 
   const gameNavigationTimeline = getElementTimeline(gameNavigation);

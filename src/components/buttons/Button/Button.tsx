@@ -9,19 +9,20 @@ export interface ButtonProps
 
 const Button: React.ForwardRefExoticComponent<
   ButtonProps & React.RefAttributes<HTMLButtonElement>
-> = forwardRef(
-  ({ className, children, disableFocus, ...otherProps }, forwardRef) => {
-    return (
-      <button
-        className={classNames(styles.button, className)}
-        tabIndex={disableFocus ? -1 : undefined}
-        {...(otherProps as React.ButtonHTMLAttributes<HTMLButtonElement>)}
-        ref={forwardRef}
-      >
-        {children}
-      </button>
-    );
-  }
-);
+> = forwardRef(function Button(
+  { className, children, disableFocus, ...otherProps },
+  forwardRef
+) {
+  return (
+    <button
+      className={classNames(styles.button, className)}
+      tabIndex={disableFocus ? -1 : undefined}
+      {...(otherProps as React.ButtonHTMLAttributes<HTMLButtonElement>)}
+      ref={forwardRef}
+    >
+      {children}
+    </button>
+  );
+});
 
 export default Button;
